@@ -45,7 +45,7 @@ jobs:
                 const match = fromRetentionWorkflow ? /^latest-run-(\d+)-(\d+)-(\d+)$/.exec(artifact.name) : null;
                 const sourceId = match ? Number(match[1]) : artifact.workflow_run.id;
                 const created = match ? Number(match[2]) : Date.parse(runs.get(sourceId).created_at);
-                if (created <= cutoff) continue;
+                // Artifact age controls retention; rerunning an older workflow creates fresh artifacts.
                 const attempt = match ? Number(match[3]) : runs.get(sourceId).run_attempt;
                 const key = `${sourceId}:${attempt}`;
                 if (!groups.has(key)) groups.set(key, { sourceId, created, attempt, artifacts: [] });
