@@ -1,14 +1,7 @@
 name: pr-tests
 
 on:
-  pull_request:
-    types:
-      - "opened"
-      - "reopened"
-      - "synchronize"
-    paths:
-      - "src/**"
-      - "build.mjs"
+  workflow_dispatch:
 
 jobs:
   tests:

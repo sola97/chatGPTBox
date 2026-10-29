@@ -1,8 +1,6 @@
 name: tagged-release
 on:
-  push:
-    tags:
-      - "v*"
+  workflow_dispatch:
 
 permissions:
   id-token: "write"
